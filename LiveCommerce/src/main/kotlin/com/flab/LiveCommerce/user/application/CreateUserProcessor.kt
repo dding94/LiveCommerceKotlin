@@ -1,6 +1,10 @@
 package com.flab.LiveCommerce.user.application
 
-import com.flab.user.application.command.CreateUserCommand
+import com.flab.LiveCommerce.user.application.command.CreateUserCommand
+import com.flab.LiveCommerce.user.application.result.UserResult
+import com.flab.LiveCommerce.user.domain.User
+import com.flab.LiveCommerce.user.domain.exception.UserDuplicatedEmailException
+
 
 class CreateUserProcessor(
     userRepository: UserRepository,
@@ -15,11 +19,11 @@ class CreateUserProcessor(
     }
 
     fun execute(command: CreateUserCommand): UserResult {
-        if (userRepository.existsByEmail(command.getEmail())) {
+        if (userRepository.existsByEmail(command.email)) {
             throw UserDuplicatedEmailException()
         }
-        val encryptedPassword: String = passwordEncryptor.encrypt(command.getPassword())
-        val user: Unit = userRepository.save(command.toEntity(encryptedPassword))
-        return UserResult.from(user)
+        val encryptedPassword: String = passwordEncryptor.encrypt(command.password)
+        val user: User = userRepository.save(command.toEntity(encryptedPassword))
+        return UserResult.form(user)
     }
 }

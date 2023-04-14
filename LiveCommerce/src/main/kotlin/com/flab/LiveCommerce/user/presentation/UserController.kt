@@ -20,7 +20,7 @@ class UserController(
     @PostMapping
     fun signUp(@RequestBody request: CreateUserRequest): CommonApiResponse<UserResponse> {
         val user: UserResult = userManager.createUser(request.toCommand())
-        return CommonApiResponse.success(UserResponse.from(user))
+        return CommonApiResponse.success(UserResponse.form(user))
     }
 
     @PostMapping("/login")
@@ -32,7 +32,7 @@ class UserController(
 
     @PostMapping("/email/check")
     fun checkEmail(@RequestBody request: UserEmailRequest): CommonApiResponse<String> {
-        userManager.checkEmail(request.eamil)
+        userManager.checkEmail(request.email)
         return CommonApiResponse.success(UserResponse.checkEmail())
     }
 }

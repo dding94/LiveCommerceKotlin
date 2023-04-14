@@ -1,5 +1,7 @@
 package com.flab.LiveCommerce.user.application
 
+import com.flab.LiveCommerce.user.application.command.LoginUserCommand
+import com.flab.LiveCommerce.user.domain.exception.UserPasswordNotMatchedException
 import com.flab.common.auth.AuthenticatedUser
 
 class LoginUserProcessor(
@@ -24,7 +26,7 @@ class LoginUserProcessor(
     }
 
     fun execute(command: LoginUserCommand): String {
-        val user: Unit = userRepository.findByEmail(command.getEmail())
+        val user: Unit = userRepository.findByEmail(command.email)
         if (!checkPassword(command, user)) {
             throw UserPasswordNotMatchedException()
         }
@@ -38,6 +40,7 @@ class LoginUserProcessor(
                 tokenExpirationSec
             )
         )
+
         return token
     }
 

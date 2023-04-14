@@ -1,5 +1,6 @@
 package com.flab.LiveCommerce.user.application
 
+import com.flab.LiveCommerce.user.domain.exception.UserDuplicatedEmailException
 import com.flab.user.domain.UserRepository
 
 class CheckEmailProcessor(userRepository: UserRepository) {
