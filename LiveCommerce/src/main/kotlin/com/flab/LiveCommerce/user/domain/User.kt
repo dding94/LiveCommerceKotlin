@@ -8,9 +8,9 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    var email: String? = null,
-    var password: String? = null,
-    var nickname: String? = null,
+    var email: String,
+    var password: String,
+    var nickname: String,
 
     @Enumerated(EnumType.STRING)
     var role: Role? = Role.USER

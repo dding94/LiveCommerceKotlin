@@ -1,7 +1,7 @@
 package com.flab.LiveCommerce.user.application
 
+import com.flab.LiveCommerce.user.domain.UserRepository
 import com.flab.LiveCommerce.user.domain.exception.UserDuplicatedEmailException
-import com.flab.user.domain.UserRepository
 
 class CheckEmailProcessor(userRepository: UserRepository) {
     private val userRepository: UserRepository
@@ -10,7 +10,7 @@ class CheckEmailProcessor(userRepository: UserRepository) {
         this.userRepository = userRepository
     }
 
-    fun execute(email: String?) {
+    fun execute(email: String) {
         if (userRepository.existsByEmail(email)) {
             throw UserDuplicatedEmailException()
         }

@@ -1,6 +1,6 @@
 package com.flab.LiveCommerce.user.application
 
-import com.flab.user.domain.TokenRepository
+import com.flab.LiveCommerce.user.domain.TokenRepository
 
 class LogoutUserProcessor(tokenRepository: TokenRepository) {
     private val tokenRepository: TokenRepository

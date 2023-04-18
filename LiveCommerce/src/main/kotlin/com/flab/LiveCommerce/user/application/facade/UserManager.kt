@@ -29,7 +29,7 @@ class UserManager(
         logoutUserProcessor.execute(token)
     }
 
-    fun checkEmail(email: String?) {
+    fun checkEmail(email: String) {
         checkEmailProcessor.execute(email)
     }
 }
