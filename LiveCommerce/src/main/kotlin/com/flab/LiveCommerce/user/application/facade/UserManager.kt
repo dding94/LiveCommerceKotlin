@@ -16,7 +16,6 @@ class UserManager(
     private val logoutUserProcessor: LogoutUserProcessor,
     private val checkEmailProcessor: CheckEmailProcessor,
 ) {
-
     fun createUser(command: CreateUserCommand): UserResult {
         return createUserProcessor.execute(command)
     }

@@ -12,8 +12,6 @@ class LoginUserProcessor(
     private val passwordEncryptor: PasswordEncryptor,
     private val tokenExpirationSec: Long,
 ) {
-
-
     fun execute(command: LoginUserCommand): String {
         val user = userRepository.findByEmail(command.email)
 

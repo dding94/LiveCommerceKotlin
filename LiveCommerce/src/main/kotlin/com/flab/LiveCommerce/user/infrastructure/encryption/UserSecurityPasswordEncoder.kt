@@ -1,23 +1,15 @@
-package com.flab.LiveCommerce.user.infrastructure.encryption;
+package com.flab.LiveCommerce.user.infrastructure.encryption
 
-import com.flab.user.domain.PasswordEncryptor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.flab.LiveCommerce.user.domain.PasswordEncryptor
+import org.springframework.security.crypto.password.PasswordEncoder
 
-public class UserSecurityPasswordEncoder implements PasswordEncryptor {
+class UserSecurityPasswordEncoder(private val passwordEncoder: PasswordEncoder) : PasswordEncryptor {
 
-    private final PasswordEncoder passwordEncoder;
-
-    public UserSecurityPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    override fun encrypt(text: String): String {
+        return passwordEncoder.encode(text)
     }
 
-    @Override
-    public String encrypt(String password) {
-        return passwordEncoder.encode(password);
-    }
-
-    @Override
-    public boolean match(String rawPassword, String encryptedPassword) {
-        return passwordEncoder.matches(rawPassword, encryptedPassword);
+    override fun match(rawText: String, encryptedText: String): Boolean {
+        return passwordEncoder.matches(rawText, encryptedText)
     }
 }

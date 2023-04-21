@@ -1,12 +1,10 @@
-package com.flab.LiveCommerce.user.infrastructure.generator;
+package com.flab.LiveCommerce.user.infrastructure.generator
 
-import com.flab.user.domain.TokenGenerator;
-import java.util.UUID;
+import com.flab.LiveCommerce.user.domain.TokenGenerator
+import java.util.*
 
-public class NonInfoTokenGenerator implements TokenGenerator {
-
-    @Override
-    public String generate() {
-        return UUID.randomUUID().toString();
+class NonInfoTokenGenerator : TokenGenerator {
+    override fun generate(): String {
+        return UUID.randomUUID().toString()
     }
 }

@@ -22,6 +22,7 @@ dependencies {
 	implementation("org.hibernate.validator:hibernate-validator:6.2.0.Final")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.springframework.security:spring-security-crypto")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
